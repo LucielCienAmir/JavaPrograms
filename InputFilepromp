@@ -1,0 +1,35 @@
+import java.util.Scanner;;
+public class InputFilePrompt {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String filename, substring;
+        boolean loop = true;
+        int zero;
+        String extenstion = ".dat";
+        filename = substring = new String();
+        System.out.println("C:\\>java filePrompt");
+        do{
+            System.out.printf("Input File: ");
+            filename = sc.nextLine(); 
+            substring = filename.substring(filename.length() - extenstion.length(), filename.length());
+            if(substring == extenstion){
+                for(int i = 0; i <= filename.length(); i++){
+                    if(filename.charAt(i) == ' '){
+                        System.out.println(">>>file name must not contain spaces<<<\n");
+                    }
+                    else{
+                        System.out.println("OK");
+                        loop = false;
+                    }
+                }
+            }
+            else if(filename.length() - extenstion.length() <= 0){
+                System.out.println(">>>>>>file name missing<<<\n");
+            }
+            else{
+                System.out.println(">>>file name must end in .dat<<<\n");
+            }
+        }
+        while(loop);
+    }
+}
