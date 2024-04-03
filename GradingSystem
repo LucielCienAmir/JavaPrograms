@@ -1,0 +1,71 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+public class GradingSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("##.##");
+        byte option;
+        double total, quiz, labwork, exam;
+        String optionTitle;
+        optionTitle  = new String();
+        boolean preloop, loop, loop1, loop2, loop3;
+        preloop = loop = loop1 = loop2 = loop3 = true;
+        do{
+            do{
+                System.out.printf("GRADING SYSTEM\nOptions:\n[1] Compute Midterm Grade\n[2] Compute Final Grade\n[3] EXIT\nENTER: ");
+                option = sc.nextByte();
+                preloop = false;
+                switch (option) {
+                    case 1:
+                        optionTitle = "Midterm";
+                        break;
+                    case 2:
+                        optionTitle = "Final";
+                        break;
+                }
+                if(option > 3 || option < 1){
+                    System.out.println("ERROR!!! INVALID INPUT");
+                    preloop = true;    
+                }
+            } while (preloop == true);
+            if(option == 1 || option == 2){
+                do{//QUIZ
+                    System.out.printf("Enter your Quiz Grade: ");
+                    quiz = sc.nextFloat();
+                    loop1 = false;
+                    if(quiz > 5 || quiz < 1){
+                        System.out.println("ERROR!!! INVALID INPUT\n");
+                        loop1 = true;  
+                    }
+                }while(loop1 == true);
+                do{// LABWORK
+                    System.out.printf("Enter your Labwork Grade: ");
+                    labwork = sc.nextFloat();
+                    loop2 = false;
+                    if(labwork > 5 || labwork < 1){
+                        System.out.println("ERROR!!! INVALID INPUT\n");
+                        loop2 = true;  
+                    }
+                }while(loop2 == true);
+                do{//EXAM
+                    System.out.printf("Enter your %s Grade: ", optionTitle);
+                    exam = sc.nextFloat();
+                    loop3 = false;
+                    if(exam > 5 || exam < 1){
+                        System.out.println("ERROR!!! INVALID INPUT\n");
+                        loop3 = true;  
+                    }
+                }while(loop3 == true);
+                total = Math.floor(((quiz*0.2)+(labwork*0.4)+(exam*0.4))* 10)/10;
+                System.out.println("\n"+optionTitle+" Grade: "+df.format(total));
+                if(total < 4.0)
+                    System.out.println("REMARKS: PASSED!!\n");
+                else
+                    System.out.println("REMARKS: FAILED!!\n");
+            }
+            else
+                loop = false;    
+        } while(loop == true);
+        System.out.println("\nTHANK YOU AND GOODBYE");
+    }
+}
