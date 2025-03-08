@@ -1,0 +1,38 @@
+public class Act3RecurAlgo {
+    public static int binarySearch(int[] arr, int target, int start, int end) {
+        // if walay makit ang target hantud nahimo ang start greater than the end
+        if (start > end) {
+            return -1;
+        }
+
+        // initilize mid as a starting point, THE DIVIDE AND CONQUERRRRR!!!
+        int mid = start + (end - start) / 2;
+
+        // returns the mid as the location of the target
+        if (arr[mid] == target) {
+            return mid;// if the target is 7, (3 + 4) / 2 = 3. And 3 is which is the index of 7
+        }
+
+        // If ang target is smaller, search in the left half (1,3)
+        if (target < arr[mid]) {
+            return binarySearch(arr, target, start, mid - 1);// recursion until it return to mid or -1
+        }
+
+        // If ang target is larger, search in the right half(4,5)
+        return binarySearch(arr, target, mid + 1, end);// recursion until it return to mid or -1
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 3, 5, 7, 9 };
+        int target = 5;
+        int result = binarySearch(arr, target, 0, arr.length - 1);// array, 5, 0, 4(since when you use lenght i gives 5
+                                                                  // so we subtract it to 1 to avoid out of bounds
+                                                                  // error)
+
+        if (result != -1) {
+            System.out.println("Sanaol, nakit siya sa location: " + result);
+        } else {
+            System.out.println("Error wla kay uyab.");// Deaderts or ang target wlay na targetan T_T
+        } // Sorry sir nahan kog lingaw2 sa comment kay na burnout ko
+    }
+}
