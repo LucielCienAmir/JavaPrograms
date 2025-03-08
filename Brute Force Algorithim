@@ -1,0 +1,37 @@
+
+public class Act2BruteAlgo {
+
+    public static void Matcha(String pat, String txt) {
+        int patternlenght = pat.length();
+        int textlenght = txt.length();
+        System.out.print("Pattern found at index: ");
+        // if we want the pattern checks the pattern lenght without getting an "out of
+        // bounds" we subtract the lenght of txt and pattern
+        for (int i = 0; i <= textlenght - patternlenght; i++) {// int i will we the location of the text.
+            int j;
+
+            // uses patternlenght as a limiter so its 3
+            for (j = 0; j < patternlenght; j++) {// since string starts with 0, it starts with A(0), B(1), C(2) < 3 and
+                                                 // so on.
+                if (txt.charAt(i + j) != pat.charAt(j)) {// it compares the txt and pattern. 'A'[0+0]==A[0],
+                                                         // 'B'[0+1]==B[1], 'C'[0+2]==C[2]
+                    break;// only stops the loop if it found not equals to the pattern or J = 3
+                }
+            }
+
+            // if J = 3 means that the pattern found a match and prints out "i" as the
+            // locator
+            if (j == patternlenght) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        String text = "ABCABCD";
+        String pattern = "ABC";
+        Matcha(pattern, text);// the beginning of destruction :Skull Emoji:
+
+    }
+}
