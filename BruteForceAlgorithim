@@ -1,4 +1,3 @@
-
 public class Act2BruteAlgo {
 
     public static void Matcha(String pat, String txt) {
